@@ -31,7 +31,7 @@ Chaque TP est un projet autonome : `cd tpNN && npm install`.
 |---|---|---|
 | **Sprint 1 : Fondations & serveur** | | |
 | 1 | Git & TypeScript | [`tp01/`](./tp01) |
-| 2 | NestJS : API REST & asynchronisme | `tp02/` |
+| 2 | NestJS : API REST & asynchronisme | [`tp02/`](./tp02) |
 | 3 | Persistance : ORM & base de données | `tp03/` |
 | **Sprint 2 : Sécurité & UI** | | |
 | 4 | Authentification JWT & Guards | `tp04/` |
