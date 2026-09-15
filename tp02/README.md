@@ -48,7 +48,7 @@ src/
     ├── models.module.ts          the module, empty           ← step 1
     ├── models.service.ts         the logic, empty            ← steps 2, 3, 4, 6
     ├── models.controller.ts      the routes                  ← steps 2, 3, 4
-    └── dto/create-model.dto.ts   validation                  ← step 5
+    └── dto/create-model.dto.ts   validation, to write        ← step 5
 test/
 └── models.e2e-spec.ts            the spec, do not modify
 ```
@@ -61,7 +61,7 @@ One rule: the controller translates HTTP, the service decides. No business logic
 2. **`GET /models`.** Give the service your `ModelZoo` as a private field, then write `clear`, `create`, `findAll`, and the route. ✅ The first tests turn green.
 3. **`GET /models/:id`.** Unknown id → `404`.
 4. **`POST` and `DELETE`.** `201` on create. `204` and no body on delete, `404` if unknown. Your `ModelZoo` cannot remove anything yet: make it grow.
-5. **Validate.** `{"name": 42}` must get a `400` with the list of errors (`class-validator`, see the course appendix). Types are erased at runtime: `task` needs its four values as a **runtime list**, typed so that a typo is a compile error.
+5. **Validate.** `{"name": 42}` must get a `400` with the list of errors. Write `CreateModelDto` in `src/models/dto/`, decorated with `class-validator` (see the course appendix), and make `POST` go through it. Types are erased at runtime: `task` needs its four values as a **runtime list**, typed so that a typo is a compile error.
 6. **Filter.** `?org=` and `?task=`, alone or together. Filtering lives in the service, not in the controller.
 
 ## 🛰 Extra
