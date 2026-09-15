@@ -1,8 +1,8 @@
 import { INestApplication, ValidationPipe } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import request from 'supertest';
-import { AppModule } from '../src/app.module';
-import { ModelsService } from '../src/models/models.service';
+import { AppModule } from '../src/app.module.js';
+import { ModelsService } from '../src/models/models.service.js';
 
 /**
  * These tests are the assignment: they describe the expected behaviour of

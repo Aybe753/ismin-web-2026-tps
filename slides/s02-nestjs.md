@@ -188,12 +188,12 @@ layout: section
 <div>
 
 ```sh
-npm init            # crée package.json
-npm install         # installe tout
-npm install axios   # ajoute une dépendance
-npm install -D jest # ajoute une dépendance de dev
+npm init              # crée package.json
+npm install           # installe tout
+npm install axios     # ajoute une dépendance
+npm install -D vitest # ajoute une dépendance de dev
 
-npm run start       # lance un script
+npm run start         # lance un script
 npm run test
 ```
 
@@ -222,32 +222,32 @@ npm run test
 
 # `package.json`&nbsp;: la carte d’identité du projet
 
-```json {2-4|6-11|13-20|all}
+```json {2-5|6-11|12-19|all}
 {
   "name": "tp02-modelzoo-api",
   "private": true,
+  "type": "module",
   "engines": { "node": ">=26.0.0 <27.0.0" },
-
   "scripts": {
     "start:dev": "nest start --watch",
     "build": "nest build",
-    "test": "jest --config ./test/jest-e2e.json",
+    "test": "vitest run",
     "typecheck": "tsc --noEmit"
   },
-
   "dependencies": {
-    "@nestjs/common": "^11.0.1",
+    "@nestjs/common": "^12.0.1",
     "class-validator": "^0.14.1"
   },
   "devDependencies": {
-    "typescript": "^5.7.3",
-    "jest": "^29.7.0"
+    "typescript": "^6.0.2",
+    "vitest": "^4.1.2"
   }
 }
 ```
 
 <div class="pt-2 text-sm op-75">
-Les <b>scripts</b> sont des raccourcis&nbsp;: plutôt que de retenir une commande longue, on tape <code>npm run test</code>.
+Les <b>scripts</b> sont des raccourcis&nbsp;: on tape <code>npm run test</code>, pas la commande longue.
+<code>"type": "module"</code>&nbsp;: des modules ES, comme hier, d’où les imports en <code>.js</code>.
 </div>
 
 ---
@@ -363,6 +363,7 @@ tp02/
 ├── package.json
 ├── nest-cli.json
 ├── tsconfig.json
+├── vitest.config.ts
 ├── src
 │   ├── main.ts
 │   ├── app.module.ts
@@ -605,7 +606,7 @@ Ce qu’on n’y met <b>jamais</b>&nbsp;: tout ce qui parle HTTP. Un service ne 
 
 ```ts {4-5|6|8-11|13-15|all}
 import { Injectable } from '@nestjs/common';
-import { DatasetCatalog } from './dataset-catalog';
+import { DatasetCatalog } from './dataset-catalog.js';
 
 @Injectable()                       // ← « Nest peut fournir cette classe »
 export class DatasetsService {
@@ -854,13 +855,13 @@ flowchart LR
 
 ```ts
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
+import { AppModule } from './app.module.js';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);   // le module racine
   await app.listen(process.env.PORT ?? 3000);        // le port d'écoute
 }
-void bootstrap();                                    // void : on lance, sans attendre
+await bootstrap();                                   // await hors fonction : permis à la racine d'un module ES
 ```
 
 <div class="pt-3 text-sm op-75">
@@ -1102,7 +1103,7 @@ async function loadDatasets(): Promise<Dataset[]> {
   return JSON.parse(raw);        // un fichier à nous : on lui fait confiance
 }
 
-// await ne s'utilise QUE dans une fonction async
+// await : dans une fonction async, ou à la racine d'un module ES
 async function main() {
   const datasets = await loadDatasets();              // ✅
 
@@ -1430,7 +1431,8 @@ Exceptions prêtes à l’emploi&nbsp;: <code>NotFoundException</code> (404), <c
 ```
 
 <div class="pt-6 text-sm op-75">
-Tous viennent de <code>class-validator</code>. La liste complète&nbsp;: <b>github.com/typestack/class-validator</b>
+Tous viennent de <code>class-validator</code>. La liste complète&nbsp;: <b>github.com/typestack/class-validator</b><br/>
+Depuis Nest 12, l’alternative sans décorateurs&nbsp;: un schéma Zod ou Valibot passé à <code>@Body({ schema })</code>, validé par <code>StandardSchemaValidationPipe</code>. Le cours reste sur class-validator, le défaut documenté.
 </div>
 
 ---

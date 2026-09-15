@@ -1,5 +1,5 @@
 import { Controller } from '@nestjs/common';
-import { ModelsService } from './models.service';
+import { ModelsService } from './models.service.js';
 
 /**
  * The controller: it translates HTTP ↔ domain. No business logic here.

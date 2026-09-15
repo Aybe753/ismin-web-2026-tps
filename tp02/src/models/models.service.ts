@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Model, Task } from './model';
+import { Model, Task } from './model.js';
 
 /**
  * The business logic of the catalogue, as a Nest service.
