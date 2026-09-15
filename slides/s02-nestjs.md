@@ -691,27 +691,30 @@ Un objet retourné devient du <b>JSON automatiquement</b>, avec un <code>200</co
 
 # ③ Un contrôleur, plusieurs routes
 
-```ts {1-7|9-14|all}
+```ts {5-9|11-16|all}
 @Controller('datasets')
 export class DatasetsController {
-  @Get()          findAll()  { … }    // GET    /datasets
-  @Post()         create()   { … }    // POST   /datasets   ← même chemin
-  @Get(':id')     findOne()  { … }    // GET    /datasets/:id
-  @Delete(':id')  remove()   { … }    // DELETE /datasets/:id  ← même chemin
-}
+  constructor(private readonly datasetsService: DatasetsService) {}
 
-// Récupérer le paramètre d'URL
-findOne(@Param('id') id: string): Dataset {
-  const model = this.datasetsService.findOne(id);
-  // model peut être undefined : à vous de renvoyer un 404 (README, étape 3)
-  …
+  @Get()                                   // GET  /datasets
+  findAll(): Dataset[] { … }
+
+  @Post()                                  // POST /datasets, même chemin, autre verbe
+  create(@Body() dataset: Dataset): Dataset { … }
+
+  @Get(':id')                              // GET  /datasets/:id
+  findOne(@Param('id') id: string): Dataset {
+    const dataset = this.datasetsService.findOne(id);
+    if (!dataset) throw new NotFoundException();   // Nest en fait un 404
+    return dataset;
+  }
 }
 ```
 
 <v-clicks>
 
-- C’est le couple **(verbe, chemin)** qui détermine la méthode appelée, pas le chemin seul
-- `NotFoundException` devient un **404**, `BadRequestException` un **400**&nbsp;: Nest traduit vos exceptions en réponses HTTP
+- C’est le couple **(verbe, chemin)** qui choisit la méthode, pas le chemin seul
+- Nest traduit l’exception en réponse&nbsp;: `NotFoundException` → **404**, `BadRequestException` → **400**
 
 </v-clicks>
 
