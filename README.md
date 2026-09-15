@@ -56,6 +56,8 @@ Chaque TP démarre d'un état fonctionnel : si vous n'avez pas terminé le préc
 
 Les assistants sont autorisés et encouragés : comme assistants, jamais comme substituts. L'outillage évolue avec vos compétences : [Le Chat](https://chat.mistral.ai) dans le navigateur pour commencer, puis l'intégration à l'éditeur, puis un agent en ligne de commande sur les séances DevOps.
 
+Dans ce dépôt, l'IA intégrée à l'éditeur est coupée par un réglage de projet (`.vscode/settings.json`) : on commence avec l'assistant dans le navigateur, et on ouvre l'éditeur plus tard, quand vous saurez relire ce qu'il propose.
+
 > ⚠️ **Règle d'or** : pendant les TP, je passe et je vous demande d'expliquer votre code. Si vous ne savez pas expliquer une partie, je la supprime.
 
 ## ✅ Prérequis
