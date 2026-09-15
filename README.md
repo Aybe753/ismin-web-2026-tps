@@ -19,8 +19,9 @@ cd ismin-web-2026-tps
 Les TP sont publiés **au fil des séances**. À partir de la séance 2, vous déclarez le dépôt du cours comme `upstream`, une fois, puis vous récupérez le TP du jour :
 
 ```sh
-git remote add upstream https://github.com/gaetanmaisse/ismin-web-2026-tps.git
-git pull upstream main
+git remote add upstream https://github.com/gaetanmaisse/ismin-web-2026-tps.git   # une seule fois
+git config --global pull.rebase false                                             # une seule fois : un pull fusionne
+git pull --no-edit upstream main                                                  # à chaque séance
 ```
 
 Chaque TP est un projet autonome : `cd tpNN && npm install`.

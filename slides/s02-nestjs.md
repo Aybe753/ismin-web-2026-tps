@@ -311,9 +311,10 @@ layout: center
 ```sh
 # Une seule fois : déclarer le dépôt du cours comme source des TP
 git remote add upstream https://github.com/gaetanmaisse/ismin-web-2026-tps.git
+git config --global pull.rebase false      # un pull fusionne, sans réécrire vos commits
 
 # À chaque séance : récupérer le TP du jour
-git pull upstream main
+git pull --no-edit upstream main           # --no-edit : pas d'éditeur pour le message de fusion
 
 cd tp02 && npm install
 npm run start:dev
