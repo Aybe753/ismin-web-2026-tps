@@ -72,6 +72,56 @@ layout: section
 
 ---
 
+# Une requête, une réponse
+
+<div class="grid grid-cols-2 gap-6 pt-2">
+<div>
+
+```mermaid {scale: 0.7}
+%%{init: {'theme':'base','themeVariables':{'fontFamily':'Roboto, ui-sans-serif, sans-serif','fontSize':'14px'},'sequence':{'mirrorActors':false}}}%%
+sequenceDiagram
+  participant C as 🖥️ Client
+  participant S as ⚙️ Serveur
+  C->>S: GET /datasets
+  S-->>C: 200 + JSON
+  C->>S: POST /datasets + JSON
+  S-->>C: 201
+  C->>S: GET /datasets/inconnu
+  S-->>C: 404
+```
+
+</div>
+<div>
+
+```http
+GET /datasets?org=mozilla HTTP/1.1
+Host: api.exemple.fr
+Accept: application/json
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+[{ "name": "common_voice", "org": "mozilla", … }]
+```
+
+<div class="text-sm pt-2">
+
+<v-clicks>
+
+- Le client parle en premier, le serveur ne fait que répondre
+- Une requête&nbsp;: un **verbe**, un **chemin**, des en-têtes, parfois un **corps**
+- Une réponse&nbsp;: un **code de statut**, des en-têtes, souvent un **corps**
+- Le navigateur est un client parmi d’autres&nbsp;: Bruno, `curl`, un téléphone, une autre API
+
+</v-clicks>
+
+</div>
+
+</div>
+</div>
+
+---
+
 # JSON&nbsp;: du texte, rien d’autre
 
 Le format d’échange du web.
@@ -702,7 +752,7 @@ export class DatasetsController {
 
   @Post()                                  // POST /datasets, même chemin, autre verbe
   create(@Body() dataset: Dataset): Dataset { … }
-
+x
   @Get(':id')                              // GET  /datasets/:id
   findOne(@Param('id') id: string): Dataset {
     const dataset = this.datasetsService.findOne(id);
