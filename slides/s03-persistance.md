@@ -373,6 +373,16 @@ const datasets = await prisma.dataset.findMany({
 
 ---
 
+# Il y a un piège
+
+<img src="/medias/s03-anakin.jpg" class="h-96 mx-auto rounded" />
+
+<div class="pt-4 text-center op-75">
+L’ORM écrit le SQL, vous restez responsable de ce qu’il écrit.
+</div>
+
+---
+
 # Ce qu’un ORM vous coûte
 
 <v-clicks>
