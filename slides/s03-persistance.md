@@ -105,6 +105,185 @@ On commence avec <b>SQLite</b>&nbsp;: une base relationnelle complète… dans u
 </v-click>
 
 ---
+layout: section
+---
+
+# 1. L’asynchronisme
+
+<div class="op-75 pt-2">Attendre sans bloquer</div>
+
+---
+
+# Un service qui devient asynchrone
+
+<div class="grid grid-cols-2 gap-4 pt-2">
+<div>
+
+**Hier&nbsp;: tout en mémoire**
+
+```ts
+export class DatasetsService {
+  create(dataset: Dataset): Dataset {
+    …
+  }
+
+  findAll(): Dataset[] {
+    …
+  }
+
+  findOne(id: string): Dataset | undefined {
+    …
+  }
+}
+```
+
+</div>
+<div>
+
+**Aujourd’hui, avec une base de données**
+
+```ts
+export class DatasetsService {
+  create(dataset: Dataset): Promise<Dataset> {
+    …
+  }
+
+  findAll(): Promise<Dataset[]> {
+    …
+  }
+
+  findOne(id: string): Promise<Dataset | null> {
+    …
+  }
+}
+```
+
+</div>
+</div>
+
+<v-click>
+
+<div class="pt-6">
+
+Dès qu’une seule opération devient asynchrone, **tout ce qui l’appelle le devient aussi**. C’est contagieux, et ça remonte jusqu’au contrôleur.
+
+D’où la question suivante&nbsp;: c’est quoi, au juste, une opération asynchrone&nbsp;?
+
+</div>
+
+</v-click>
+
+---
+
+# Node exécute votre code sur un seul thread
+
+<div class="text-sm op-75 mb-4">
+Pas de <code>pthread_create</code> ici. Une seule file d’exécution, donc <b>on ne bloque jamais</b>.
+</div>
+
+<v-clicks>
+
+- Lire un fichier, appeler une API, interroger une base&nbsp;: tout cela **prend du temps**
+- Pendant ce temps, le thread doit rester libre pour traiter les autres requêtes
+- Donc&nbsp;: on ne dit pas « attends le résultat », on dit **« préviens-moi quand tu l’as »**
+
+</v-clicks>
+
+<v-click>
+
+<div class="pt-8 p-4 bg-blue-500 bg-opacity-10 rounded">
+Conséquence directe&nbsp;: une fonction qui fait des entrées/sorties ne renvoie pas un résultat, elle renvoie une <b>promesse</b> de résultat.
+</div>
+
+</v-click>
+
+---
+
+# Trois façons d’écrire la même chose
+
+````md magic-move
+```ts
+// ① Callbacks : l'enfer de l'imbrication
+readFile('datasets.json', (err, data) => {
+  if (err) return handle(err);
+  parse(data, (err, datasets) => {
+    if (err) return handle(err);
+    save(datasets, (err) => {
+      if (err) return handle(err);
+      console.log('done');
+    });
+  });
+});
+```
+
+```ts
+// ② Promises : on aplatit
+readFile('datasets.json')
+  .then((data) => parse(data))
+  .then((datasets) => save(datasets))
+  .then(() => console.log('done'))
+  .catch(handle);
+```
+
+```ts
+// ③ async/await : on lit comme du synchrone
+try {
+  const data = await readFile('datasets.json');
+  const datasets = await parse(data);
+  await save(datasets);
+  console.log('done');
+} catch (err) {
+  handle(err);
+}
+```
+````
+
+---
+
+# `async` / `await` en pratique
+
+```ts {1-5|7-9,18-20|11-15|all}
+// async devant une fonction : elle renvoie TOUJOURS une Promise
+async function loadDatasets(): Promise<Dataset[]> {
+  const raw = await readFile('datasets.json', 'utf8');
+  return JSON.parse(raw);        // un fichier à nous : on lui fait confiance
+}
+
+// await : dans une fonction async, ou à la racine d'un module ES
+async function main() {
+  const datasets = await loadDatasets();              // ✅
+
+  // Plusieurs appels en parallèle : Promise.all
+  const [locaux, distants] = await Promise.all([
+    loadDatasets(),
+    fetchFromHuggingFace(),
+  ]);
+}
+
+function nope() {
+  const datasets = await loadDatasets();              // ❌ erreur de compilation
+}
+```
+
+<div class="pt-2 text-sm op-75">
+<code>Promise.all</code> lance tout en même temps et attend le dernier. En série, ce serait deux fois plus lent.
+</div>
+
+---
+
+# À vous&nbsp;: dans quel ordre&nbsp;?
+
+```ts {monaco-run}
+async function getDataset(): Promise<string> {
+  return 'common_voice';
+}
+
+console.log('avant');
+getDataset().then((name) => console.log(name));
+console.log('après');
+```
+
+---
 
 # SQL, le minimum vital
 
@@ -137,7 +316,7 @@ Une <b>table</b> = une classe. Une <b>ligne</b> = un objet. Une <b>colonne</b> =
 layout: section
 ---
 
-# 1. Les ORM
+# 2. Les ORM
 
 <div class="op-75 pt-2">Des objets plutôt que du SQL</div>
 
@@ -230,7 +409,7 @@ new PrismaClient({ log: ['query'] })
 layout: section
 ---
 
-# 2. Prisma
+# 3. Prisma
 
 <div class="op-75 pt-2">Le schéma d’abord</div>
 
@@ -341,6 +520,10 @@ export class PrismaService
 }
 ```
 
+<div class="text-sm op-75 pt-1">
+Nest appelle <code>onModuleInit</code> au démarrage, avant d’écouter&nbsp;: le bon moment pour ouvrir la connexion. Un constructeur ne peut pas être <code>async</code>, cette méthode si.
+</div>
+
 </div>
 <div>
 
@@ -398,7 +581,7 @@ layout: section
 layout: section
 ---
 
-# 3. Les relations
+# 4. Les relations
 
 <div class="op-75 pt-2">Une colonne, deux directions</div>
 
