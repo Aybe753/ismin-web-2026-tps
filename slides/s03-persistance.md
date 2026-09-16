@@ -98,7 +98,7 @@ Recherche indexée, écritures concurrentes, contraintes d’intégrité, transa
 <div class="p-4 border border-gray-500 border-opacity-30 rounded">
 <div class="font-bold">📦 Une base NoSQL</div>
 <div class="pt-2 op-75">
-Souple sur le schéma, très bien pour certains usages, mais l’intégrité devient votre problème.
+Souple sur le schema, très bien pour certains usages, mais l’intégrité devient votre problème.
 </div>
 <div class="pt-2 text-xs op-60">→ un autre cours</div>
 </div>
@@ -175,7 +175,7 @@ export class DatasetsService {
 
 <div class="pt-6">
 
-Dès qu’une seule opération devient asynchrone, **tout ce qui l’appelle le devient aussi**. C’est contagieux, et ça remonte jusqu’au contrôleur.
+Dès qu’une seule opération devient asynchrone, **tout ce qui l’appelle le devient aussi**. C’est contagieux, et ça remonte jusqu’au controller.
 
 D’où la question suivante&nbsp;: c’est quoi, au juste, une opération asynchrone&nbsp;?
 
@@ -194,7 +194,7 @@ Pas de <code>pthread_create</code> ici. Une seule file d’exécution, donc <b>o
 <v-clicks>
 
 - Lire un fichier, appeler une API, interroger une base&nbsp;: tout cela **prend du temps**
-- Pendant ce temps, le thread doit rester libre pour traiter les autres requêtes
+- Pendant ce temps, le thread doit rester libre pour traiter les autres requests
 - Donc&nbsp;: on ne dit pas « attends le résultat », on dit **« préviens-moi quand tu l’as »**
 
 </v-clicks>
@@ -202,7 +202,7 @@ Pas de <code>pthread_create</code> ici. Une seule file d’exécution, donc <b>o
 <v-click>
 
 <div class="pt-8 p-4 bg-blue-500 bg-opacity-10 rounded">
-Conséquence directe&nbsp;: une fonction qui fait des entrées/sorties ne renvoie pas un résultat, elle renvoie une <b>promesse</b> de résultat.
+Conséquence directe&nbsp;: une fonction qui fait des entrées/sorties ne renvoie pas un résultat, elle renvoie une <b>Promise</b> de résultat.
 </div>
 
 </v-click>
@@ -277,12 +277,12 @@ function nope() {
 
 ---
 
-# Et ça remonte jusqu’au contrôleur
+# Et ça remonte jusqu’au controller
 
 <img src="/medias/s03-gru.png" class="h-96 mx-auto rounded" />
 
 <div class="pt-4 text-center op-75">
-Dans le TP, chaque route du contrôleur gagne un <code>await</code>. Rien d’autre.
+Dans le TP, chaque route du controller gagne un <code>await</code>. Rien d’autre.
 </div>
 
 ---
@@ -311,7 +311,7 @@ DELETE FROM Dataset WHERE name = 'squad';
 ```
 
 <div class="pt-3 text-sm op-75">
-Une <b>table</b> = une classe. Une <b>ligne</b> = un objet. Une <b>colonne</b> = un attribut. La clé étrangère viendra avec les relations, en section 4.
+Une <b>table</b> = une classe. Une <b>ligne</b> = un objet. Une <b>colonne</b> = un attribut. La foreign key viendra avec les relations, en section 4.
 </div>
 
 ---
@@ -365,7 +365,7 @@ const datasets = await prisma.dataset.findMany({
 
 <div class="pt-8">
 
-**O**bject-**R**elational **M**apping&nbsp;: faire correspondre des **tables** à des **objets**, et écrire des requêtes dans votre langage plutôt qu’en chaînes de caractères.
+**O**bject-**R**elational **M**apping&nbsp;: faire correspondre des **tables** à des **objets**, et écrire des queries dans votre langage plutôt qu’en chaînes de caractères.
 
 </div>
 
@@ -397,7 +397,7 @@ L’ORM écrit le SQL, vous restez responsable de ce qu’il écrit.
 
 <div>
 
-### 🐌 Des requêtes que vous n’avez pas écrites
+### 🐌 Des queries que vous n’avez pas écrites
 
 L’ORM génère le SQL. La plupart du temps c’est bien. Parfois c’est catastrophique, et vous ne le verrez qu’en production, avec de vraies données.
 
@@ -423,11 +423,11 @@ layout: section
 
 # 3. Prisma
 
-<div class="op-75 pt-2">Le schéma d’abord</div>
+<div class="op-75 pt-2">Le schema d’abord</div>
 
 ---
 
-# Le schéma, source de vérité
+# Le schema, source de vérité
 
 `prisma/schema.prisma`
 
@@ -460,13 +460,13 @@ Un seul fichier décrit la base <b>et</b> les types TypeScript. Les deux ne peuv
 # Trois commandes
 
 ```sh {1-3|5-7|9-11|all}
-# 1. Créer/mettre à jour la base à partir du schéma
+# 1. Créer/mettre à jour la base à partir du schema
 npx prisma migrate dev --name ajout-du-dataset
 #    → écrit un fichier SQL dans prisma/migrations/, l'applique, régénère le client
 
 # 2. Régénérer le client typé (fait automatiquement par migrate)
 npx prisma generate
-#    → met à jour les types TypeScript à partir du schéma
+#    → met à jour les types TypeScript à partir du schema
 
 # 3. Inspecter la DB
 npx prisma studio
@@ -479,7 +479,7 @@ npx prisma studio
 
 Les **migrations sont versionnées avec le code**. Votre binôme lance `prisma migrate dev` et obtient exactement votre base. En production, `prisma migrate deploy` applique les migrations manquantes.
 
-C’est du Git pour le schéma de données.
+C’est du Git pour le schema de données.
 
 </div>
 
@@ -492,7 +492,7 @@ C’est du Git pour le schéma de données.
 <img src="/medias/s03-drake.jpg" class="h-96 mx-auto rounded" />
 
 <div class="pt-4 text-center op-75">
-Le schéma change, la migration suit. Jamais l’inverse.
+Le schema change, la migration suit. Jamais l’inverse.
 </div>
 
 ---
@@ -518,7 +518,7 @@ await prisma.dataset.aggregate({ _avg: { rows: true } });
 ```
 
 <div class="pt-2 text-sm op-75">
-Tout renvoie une <b>promesse</b>&nbsp;: chaque appel part sur le réseau. D’où les <code>await</code> partout.
+Tout renvoie une <b>Promise</b>&nbsp;: chaque appel part sur le réseau. D’où les <code>await</code> partout.
 </div>
 
 ---
@@ -528,7 +528,7 @@ Tout renvoie une <b>promesse</b>&nbsp;: chaque appel part sur le réseau. D’o�
 <img src="/medias/s03-rollsafe.jpg" class="h-80 mx-auto rounded" />
 
 <div class="pt-4 text-center op-75">
-Le type sort du schéma, pas de votre bonne foi.
+Le type sort du schema, pas de votre bonne foi.
 </div>
 
 ---
@@ -581,7 +581,7 @@ export class DatasetsService {
 
 <div class="pt-8">
 
-**Le contrôleur ne change presque pas**&nbsp;: un `await` par route, rien d’autre. C’est tout l’intérêt de la séparation d’hier&nbsp;:
+**Le controller ne change presque pas**&nbsp;: un `await` par route, rien d’autre. C’est tout l’intérêt de la séparation d’hier&nbsp;:
 on remplace le stockage sans toucher aux routes.
 
 </div>
@@ -628,7 +628,7 @@ model Dataset {
   description String?
 
   org         Organisation @relation(fields: [orgId], references: [id])
-  orgId       String             // ← la clé étrangère, vraie colonne
+  orgId       String             // ← la foreign key, vraie colonne
 }
 ```
 
@@ -645,7 +645,7 @@ Côté base&nbsp;: une seule colonne <code>orgId</code>. Côté TypeScript&nbsp;
 const dataset = await prisma.dataset.findUnique({ where: { name } });
 // { name: 'common_voice', orgId: '5f1e…' }
 
-// Avec include : Prisma fait la jointure
+// Avec include : Prisma fait le join
 const dataset = await prisma.dataset.findUnique({
   where: { name },
   include: { org: true },
@@ -669,7 +669,7 @@ Et le type TypeScript s’ajuste&nbsp;: sans <code>include</code>, accéder à <
 <img src="/medias/s03-clown.jpg" class="h-96 mx-auto rounded" />
 
 <div class="pt-4 text-center op-75">
-Une boucle de requêtes, c’est le piège de l’après-midi.
+Une boucle de queries, c’est le piège de l’après-midi.
 </div>
 
 ---
@@ -707,8 +707,8 @@ SELECT * FROM Organisation WHERE id = 3;
 ```
 
 <div class="pt-2 text-sm op-75">
-17 datasets → <b>18 requêtes</b>.<br/>
-10 000 datasets → 10 001 requêtes.
+17 datasets → <b>18 queries</b>.<br/>
+10 000 datasets → 10 001 queries.
 </div>
 
 </div>
@@ -722,7 +722,7 @@ SELECT * FROM Organisation WHERE id = 3;
 
 ```ts
 const datasets = await prisma.dataset.findMany({ include: { org: true } });
-// → 2 requêtes, quel que soit le nombre de datasets
+// → 2 queries, quel que soit le nombre de datasets
 ```
 
 </div>
@@ -781,11 +781,11 @@ layout: section
 
 ---
 
-# Correction&nbsp;: combien de requêtes&nbsp;?
+# Correction&nbsp;: combien de queries&nbsp;?
 
 <div class="pt-4">
 
-Activez le journal, appelez `GET /models`, et comptez&nbsp;:
+Activez les logs, appelez `GET /models`, et comptez&nbsp;:
 
 </div>
 
@@ -806,7 +806,7 @@ Vous avez un N+1. Cherchez la boucle avec un `await` dedans.
 
 **2 lignes**
 
-`include` fait la jointure. C’est ce qu’on veut.
+`include` fait le join. C’est ce qu’on veut.
 
 </div>
 </div>
@@ -815,7 +815,7 @@ Vous avez un N+1. Cherchez la boucle avec un `await` dedans.
 
 <div class="pt-8">
 
-**Le réflexe à garder&nbsp;:** devant une lenteur, la première question n’est jamais « quel index ajouter&nbsp;? » mais **« combien de requêtes ma page envoie-t-elle&nbsp;? »**
+**Le réflexe à garder&nbsp;:** devant une lenteur, la première question n’est jamais « quel index ajouter&nbsp;? » mais **« combien de queries ma page envoie-t-elle&nbsp;? »**
 
 </div>
 
