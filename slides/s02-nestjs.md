@@ -992,27 +992,6 @@ Alternative sans rien installer&nbsp;: l’extension <b>REST Client</b> de VS Co
 layout: section
 ---
 
-# TP · partie 1
-
-<div class="op-75 pt-2"><code>tp02/README.md</code>, étapes 0 à 3</div>
-
-<div class="pt-8 text-sm inline-block text-left">
-
-0. Copier votre `ModelZoo` du TP1 dans `src/models/`, ou garder le corrigé fourni
-1. Lire le projet, puis câbler le module&nbsp;: il est livré vide
-2. `GET /models`
-3. `GET /models/:id`, avec un 404 si le modèle est inconnu
-
-</div>
-
-<div class="pt-8 text-sm op-75">
-🖐 Bloqué&nbsp;? Levez la main.
-</div>
-
----
-layout: section
----
-
 # 4. Valider ce qui vient de l’extérieur
 
 <div class="op-75 pt-2">Parce qu’un type n’impose rien</div>
@@ -1134,16 +1113,24 @@ Une entrée invalide ne parvient jamais à votre service&nbsp;: Nest répond <b>
 layout: section
 ---
 
-# TP · partie 2
+# TP
 
-<div class="op-75 pt-2"><code>tp02/README.md</code>, étapes 4 à 6</div>
+<div class="op-75 pt-2"><code>tp02/README.md</code>, étapes 0 à 6</div>
 
 <div class="pt-8 text-sm inline-block text-left">
 
+0. Copier votre `ModelZoo` du TP1 dans `src/models/`, ou garder le corrigé fourni
+1. Lire le projet, puis câbler le module&nbsp;: il est livré vide
+2. `GET /models`
+3. `GET /models/:id`, avec un 404 si le modèle est inconnu
 4. `POST /models` et `DELETE /models/:id`
 5. Valider les entrées avec un DTO
 6. Filtrer avec `?org=` et `?task=`
 
+</div>
+
+<div class="pt-8 text-sm op-75">
+🖐 Bloqué&nbsp;? Levez la main.
 </div>
 
 ---

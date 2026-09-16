@@ -281,7 +281,7 @@ DELETE FROM Dataset WHERE name = 'squad';
 ```
 
 <div class="pt-3 text-sm op-75">
-Une <b>table</b> = une classe. Une <b>ligne</b> = un objet. Une <b>colonne</b> = un attribut. La clé étrangère viendra avec les relations, après la pause.
+Une <b>table</b> = une classe. Une <b>ligne</b> = un objet. Une <b>colonne</b> = un attribut. La clé étrangère viendra avec les relations, en section 4.
 </div>
 
 ---
@@ -532,27 +532,6 @@ on remplace le stockage sans toucher aux routes.
 layout: section
 ---
 
-# TP · partie 1
-
-<div class="op-75 pt-2"><code>tp03/README.md</code>, étapes 1 à 4</div>
-
-<div class="pt-8 text-sm inline-block text-left">
-
-1. `cp .env.example .env`, `npm install`, et constater dans `tp02`&nbsp;: tout a disparu
-2. Écrire le modèle `Model` dans `schema.prisma`
-3. Première migration&nbsp;: `npx prisma migrate dev`
-4. Brancher `ModelsService` sur Prisma&nbsp;: les tests d’hier doivent repasser au vert
-
-</div>
-
-<div class="pt-8 text-sm op-75">
-🖐 Bloqué&nbsp;? Levez la main.
-</div>
-
----
-layout: section
----
-
 # 4. Les relations
 
 <div class="op-75 pt-2">Une colonne, deux directions</div>
@@ -700,16 +679,24 @@ Si la seconde échoue, la première est **annulée**. Sans transaction, vous aur
 layout: section
 ---
 
-# TP · partie 2
+# TP
 
-<div class="op-75 pt-2"><code>tp03/README.md</code>, étapes 5 à 7</div>
+<div class="op-75 pt-2"><code>tp03/README.md</code>, étapes 1 à 7</div>
 
 <div class="pt-8 text-sm inline-block text-left">
 
+1. `cp .env.example .env`, `npm install`, et constater dans `tp02`&nbsp;: tout a disparu
+2. Écrire le modèle `Model` dans `schema.prisma`
+3. Première migration&nbsp;: `npx prisma migrate dev`
+4. Brancher `ModelsService` sur Prisma&nbsp;: les tests d’hier doivent repasser au vert
 5. Ajouter `Organisation` et la relation, **sans changer la forme de l’API**
 6. Adapter le seed&nbsp;: les organisations d’abord, les modèles ensuite
 7. Repérer le N+1 dans votre code, et le corriger
 
+</div>
+
+<div class="pt-8 text-sm op-75">
+🖐 Bloqué&nbsp;? Levez la main.
 </div>
 
 ---
