@@ -30,5 +30,6 @@ export interface createModelDto {
   downloads: number;
   
   @IsString()
+  
   license?: string;
 }
