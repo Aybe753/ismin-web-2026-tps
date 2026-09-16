@@ -523,6 +523,16 @@ Tout renvoie une <b>promesse</b>&nbsp;: chaque appel part sur le réseau. D’o�
 
 ---
 
+# Ce que le client généré vous donne
+
+<img src="/medias/s03-rollsafe.jpg" class="h-80 mx-auto rounded" />
+
+<div class="pt-4 text-center op-75">
+Le type sort du schéma, pas de votre bonne foi.
+</div>
+
+---
+
 # Brancher Prisma dans Nest
 
 <div class="grid grid-cols-2 gap-4 pt-2">
