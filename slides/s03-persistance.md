@@ -598,6 +598,16 @@ layout: section
 
 ---
 
+# Douze lignes, la même chaîne
+
+<img src="/medias/s03-buzz.jpg" class="h-96 mx-auto rounded" />
+
+<div class="pt-4 text-center op-75">
+Une valeur répétée, c’est une table qui manque.
+</div>
+
+---
+
 # Une organisation, plusieurs datasets
 
 ```prisma {1-8|10-19|all}
