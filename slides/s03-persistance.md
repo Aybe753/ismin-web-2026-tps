@@ -199,25 +199,11 @@ Conséquence directe&nbsp;: une fonction qui fait des entrées/sorties ne renvoi
 
 ---
 
-# Trois façons d’écrire la même chose
+# Deux façons d’écrire la même chose
 
 ````md magic-move
 ```ts
-// ① Callbacks : l'enfer de l'imbrication
-readFile('datasets.json', (err, data) => {
-  if (err) return handle(err);
-  parse(data, (err, datasets) => {
-    if (err) return handle(err);
-    save(datasets, (err) => {
-      if (err) return handle(err);
-      console.log('done');
-    });
-  });
-});
-```
-
-```ts
-// ② Promises : on aplatit
+// ① Promises : une valeur qui arrivera plus tard, et une chaîne de then
 readFile('datasets.json')
   .then((data) => parse(data))
   .then((datasets) => save(datasets))
@@ -226,7 +212,7 @@ readFile('datasets.json')
 ```
 
 ```ts
-// ③ async/await : on lit comme du synchrone
+// ② async/await : on lit comme du synchrone
 try {
   const data = await readFile('datasets.json');
   const datasets = await parse(data);
@@ -268,20 +254,6 @@ function nope() {
 <div class="pt-2 text-sm op-75">
 <code>Promise.all</code> lance tout en même temps et attend le dernier. En série, ce serait deux fois plus lent.
 </div>
-
----
-
-# À vous&nbsp;: dans quel ordre&nbsp;?
-
-```ts {monaco-run}
-async function getDataset(): Promise<string> {
-  return 'common_voice';
-}
-
-console.log('avant');
-getDataset().then((name) => console.log(name));
-console.log('après');
-```
 
 ---
 
