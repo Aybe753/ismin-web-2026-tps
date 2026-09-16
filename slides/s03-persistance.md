@@ -257,6 +257,16 @@ function nope() {
 
 ---
 
+# Et ça remonte jusqu’au contrôleur
+
+<img src="/medias/s03-gru.png" class="h-96 mx-auto rounded" />
+
+<div class="pt-4 text-center op-75">
+Dans le TP, chaque route du contrôleur gagne un <code>await</code>. Rien d’autre.
+</div>
+
+---
+
 # SQL, le minimum vital
 
 <div class="text-sm op-75 mb-3">Rappel express&nbsp;: vous n’écrirez presque pas de SQL aujourd’hui, mais il faut savoir ce que l’outil produit.</div>
