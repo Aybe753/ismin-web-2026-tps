@@ -431,14 +431,14 @@ layout: section
 
 `prisma/schema.prisma`
 
-```prisma {1-4|6-8|10-17|all}
+```prisma {1-3|5-8|10-17|all}
 datasource db {
   provider = "sqlite"          // ← séance 10 : "postgresql"
-  url      = env("DATABASE_URL")
-}
+}                              // l'URL de la base est dans prisma.config.ts
 
 generator client {
-  provider = "prisma-client-js"
+  provider = "prisma-client"   // le client TypeScript, généré dans src/generated/
+  output   = "../src/generated/prisma"
 }
 
 model Dataset {
@@ -462,9 +462,9 @@ Un seul fichier décrit la base <b>et</b> les types TypeScript. Les deux ne peuv
 ```sh {1-3|5-7|9-11|all}
 # 1. Créer/mettre à jour la base à partir du schema
 npx prisma migrate dev --name ajout-du-dataset
-#    → écrit un fichier SQL dans prisma/migrations/, l'applique, régénère le client
+#    → écrit un fichier SQL dans prisma/migrations/, et l'applique
 
-# 2. Régénérer le client typé (fait automatiquement par migrate)
+# 2. Régénérer le client typé, après chaque migration
 npx prisma generate
 #    → met à jour les types TypeScript à partir du schema
 
@@ -545,7 +545,9 @@ Le type sort du schema, pas de votre bonne foi.
 export class PrismaService
   extends PrismaClient
   implements OnModuleInit {
-
+  constructor() {
+    super({ adapter: new PrismaBetterSqlite3({ url }) });
+  }
   async onModuleInit() {
     await this.$connect();
   }
@@ -553,7 +555,7 @@ export class PrismaService
 ```
 
 <div class="text-sm op-75 pt-1">
-Nest appelle <code>onModuleInit</code> au démarrage, avant d’écouter&nbsp;: le bon moment pour ouvrir la connexion. Un constructeur ne peut pas être <code>async</code>, cette méthode si.
+<code>onModuleInit</code> est appelé avant d’écouter, et peut être <code>async</code>&nbsp;: le bon moment pour ouvrir la connexion.
 </div>
 
 </div>
