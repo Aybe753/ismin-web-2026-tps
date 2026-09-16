@@ -65,6 +65,16 @@ Un redémarrage, une mise à jour, un plantage, et il ne reste rien.
 
 ---
 
+# Il est temps de passer à autre chose
+
+<img src="/medias/s03-boyfriend.jpg" class="h-96 mx-auto rounded" />
+
+<div class="pt-4 text-center op-75">
+Vos données méritent mieux qu’un tableau en mémoire.
+</div>
+
+---
+
 # Où mettre les données, alors&nbsp;?
 
 <div class="grid grid-cols-3 gap-4 pt-6 text-sm">
