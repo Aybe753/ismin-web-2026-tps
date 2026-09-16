@@ -469,8 +469,8 @@ npx prisma generate
 #    → met à jour les types TypeScript à partir du schema
 
 # 3. Inspecter la DB
-npx prisma studio
-#    → une interface web sur localhost:5555 
+npm run db:studio
+#    → une interface web sur localhost:5555 (le script passe l'URL que Studio 7 exige)
 ```
 
 <v-click>
