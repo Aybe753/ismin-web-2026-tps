@@ -664,6 +664,16 @@ Et le type TypeScript s’ajuste&nbsp;: sans <code>include</code>, accéder à <
 
 ---
 
+# Vous allez le faire. Tout le monde le fait.
+
+<img src="/medias/s03-clown.jpg" class="h-96 mx-auto rounded" />
+
+<div class="pt-4 text-center op-75">
+Une boucle de requêtes, c’est le piège de l’après-midi.
+</div>
+
+---
+
 # 🐌 Le piège du N+1
 
 <div class="grid grid-cols-2 gap-6 pt-2">
