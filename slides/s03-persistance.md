@@ -487,6 +487,16 @@ C’est du Git pour le schéma de données.
 
 ---
 
+# Le seul chemin vers la base
+
+<img src="/medias/s03-drake.jpg" class="h-96 mx-auto rounded" />
+
+<div class="pt-4 text-center op-75">
+Le schéma change, la migration suit. Jamais l’inverse.
+</div>
+
+---
+
 # Le client, en pratique
 
 ```ts {1-6|8-13|15-20|all}
