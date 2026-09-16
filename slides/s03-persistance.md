@@ -209,6 +209,16 @@ Conséquence directe&nbsp;: une fonction qui fait des entrées/sorties ne renvoi
 
 ---
 
+# Ce qui se passe quand on bloque
+
+<img src="/medias/s03-thisisfine.jpg" class="h-80 mx-auto rounded" />
+
+<div class="pt-4 text-center op-75">
+Bloquer le thread, c’est bloquer tout le monde.
+</div>
+
+---
+
 # Deux façons d’écrire la même chose
 
 ````md magic-move
