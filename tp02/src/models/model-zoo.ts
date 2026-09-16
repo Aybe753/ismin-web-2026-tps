@@ -56,4 +56,10 @@ export class ModelZoo {
   getOrganisations(): string[] {
     return Array.from(new Set(this.getAllModels().map((model) => model.org)));
   }
+
+  clearOne(id: string): void {
+    if(this.getModel(id)) {
+      this.models.delete(id);
+    }
+  }
 }
