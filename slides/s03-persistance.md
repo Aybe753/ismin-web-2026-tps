@@ -612,7 +612,7 @@ Une valeur répétée, c’est une table qui manque.
 
 ```prisma {1-8|10-19|all}
 model Organisation {
-  id      Int     @id @default(autoincrement())
+  id      String  @id @default(uuid())
   slug    String  @unique        // "mozilla"
   name    String                 // "Mozilla"
   country String?                // le ? = colonne nullable
@@ -628,7 +628,7 @@ model Dataset {
   description String?
 
   org         Organisation @relation(fields: [orgId], references: [id])
-  orgId       Int                // ← la clé étrangère, vraie colonne
+  orgId       String             // ← la clé étrangère, vraie colonne
 }
 ```
 
@@ -643,15 +643,15 @@ Côté base&nbsp;: une seule colonne <code>orgId</code>. Côté TypeScript&nbsp;
 ```ts {1-4|6-12|all}
 // Sans include : orgId seulement, pas l'organisation
 const dataset = await prisma.dataset.findUnique({ where: { name } });
-// { name: 'common_voice', orgId: 3 }
+// { name: 'common_voice', orgId: '5f1e…' }
 
 // Avec include : Prisma fait la jointure
 const dataset = await prisma.dataset.findUnique({
   where: { name },
   include: { org: true },
 });
-// { name: 'common_voice', orgId: 3,
-//   org: { id: 3, slug: 'mozilla', name: 'Mozilla' } }
+// { name: 'common_voice', orgId: '5f1e…',
+//   org: { id: '5f1e…', slug: 'mozilla', name: 'Mozilla' } }
 ```
 
 <v-click>
@@ -823,31 +823,6 @@ Vous avez un N+1. Cherchez la boucle avec un `await` dedans.
 
 ---
 layout: center
----
-
-# 📋 Revue de fin de sprint 1
-
-<div class="pt-6">
-
-En binôme, deux minutes trente pour montrer&nbsp;:
-
-</div>
-
-<div class="pt-4 text-left max-w-lg mx-auto">
-
-1. Votre API qui répond, avec des données qui **survivent au redémarrage**
-2. Votre historique Git&nbsp;: des commits réguliers, des messages qui suivent la convention
-3. **Un bout de code proposé par l’IA que vous avez corrigé**&nbsp;: lequel, et pourquoi
-
-</div>
-
-<div class="pt-8 op-75 text-sm">
-Ce n’est pas noté. C’est pour se situer, et pour prendre l’habitude de défendre son code.
-</div>
-
----
-layout: center
-class: text-center
 ---
 
 # Sprint 2&nbsp;: la semaine prochaine
