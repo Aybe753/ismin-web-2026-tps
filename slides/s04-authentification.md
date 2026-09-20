@@ -42,13 +42,13 @@ mdc: true
 
 | Heure | Quoi |
 |---|---|
-| 0:00 | Tirage des binômes, puis des cartes |
-| 0:10 | Préparation à deux, 30 min |
-| 0:40 | Présentations, cartes 1 à 4 |
-| 1:05 | Pause |
-| 1:15 | Présentations, cartes 5 à 8 |
-| 1:40 | TP, en binômes |
-| 2:40 | Soutenance blanche |
+| 0:00 | Fin du TP3 |
+| 0:45 | Tirage des binômes, puis des cartes |
+| 0:55 | Préparation à deux, 25 min |
+| 1:20 | Présentations, cartes 1 à 4 |
+| 1:45 | Pause |
+| 1:55 | Présentations, cartes 5 à 8 |
+| 2:20 | TP, en binômes, étapes 1 à 3 |
 
 </div>
 <div>
@@ -56,7 +56,7 @@ mdc: true
 <v-clicks>
 
 - **Une carte par binôme**&nbsp;: un concept, et une question à laquelle votre exemple répond
-- **Cinq minutes** au vidéoprojecteur, minuteur visible
+- **Cinq minutes** au vidéoprojecteur, minuteur visible. Pas de soutenance blanche aujourd’hui, la première est demain
 - **Pile ou face** au moment de passer&nbsp;: l’un explique, l’autre tape
 - **Le tableau** se remplit d’un mot par carte&nbsp;: à midi, c’est votre cours
 - **Le TP** de l’après-midi utilise les huit cartes, dans le même ordre
@@ -72,7 +72,7 @@ mdc: true
 
 <v-clicks>
 
-1. **Préparation à deux, 30 minutes**, avec les sources de la carte. L’assistant IA est permis pour préparer, pas pour présenter.
+1. **Préparation à deux, 25 minutes**, avec les sources de la carte. L’assistant IA est permis pour préparer, pas pour présenter.
 2. **Pile ou face** devant la salle&nbsp;: l’un explique, l’autre tape l’exemple en commentant chaque ligne. Préparez les deux rôles.
 3. **On annonce sa source**, on tape, on ne colle pas. À 5:00, c’est fini, terminé ou pas.
 4. **Avant de commencer**, répondez à la question du binôme précédent. **Terminez** par votre question à la salle.
@@ -404,7 +404,7 @@ Carte dense&nbsp;: le token obtenu dans `beforeAll` doit servir à tous les test
 </div>
 ---
 
-# Préparation&nbsp;: 30 minutes
+# Préparation&nbsp;: 25 minutes
 
 <div class="grid grid-cols-2 gap-6 pt-2">
 <div>
@@ -484,7 +484,7 @@ layout: section
 
 # TP
 
-<div class="op-75 pt-2"><code>tp04/README.md</code>, étapes 1 à 5</div>
+<div class="op-75 pt-2"><code>tp04/README.md</code>&nbsp;: étapes 1 à 3 aujourd’hui, 4 et 5 avant demain</div>
 
 <div class="pt-8 text-sm inline-block text-left">
 
