@@ -452,11 +452,11 @@ layout: center
 
 # Présentations, cartes 1 à 4
 
-<Countdown :minutes="5" />
-
-<div class="pt-8 text-sm op-75">
+<div class="pt-6 text-lg op-75">
 Sa source · l’exemple tapé · la question à la salle
 </div>
+
+<div class="pt-6 text-sm op-60">Cinq minutes, au minuteur.</div>
 
 ---
 layout: center
@@ -472,11 +472,11 @@ layout: center
 
 # Présentations, cartes 5 à 8
 
-<Countdown :minutes="5" />
-
-<div class="pt-8 text-sm op-75">
+<div class="pt-6 text-lg op-75">
 Sa source · l’exemple tapé · la question à la salle
 </div>
+
+<div class="pt-6 text-sm op-60">Cinq minutes, au minuteur.</div>
 
 ---
 layout: section
