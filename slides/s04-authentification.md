@@ -435,33 +435,17 @@ Routes de démonstration&nbsp;: <code>src/playground/</code>, jamais <code>src/a
 layout: center
 ---
 
-# Présentations, cartes 1 à 4
+# Présentations
 
-<div class="pt-6 text-lg op-75">
+<div class="pt-4 text-xl">
+Cartes 1 à 4 · dix minutes de pause · cartes 5 à 8
+</div>
+
+<div class="pt-8 text-lg op-75">
 Sa source · l’exemple tapé · un mot au tableau
 </div>
 
-<div class="pt-6 text-sm op-60">Cinq minutes, au minuteur.</div>
-
----
-layout: center
----
-
-# Pause
-
-<div class="pt-4 op-75">Dix minutes. Cartes 5 à 8 au retour.</div>
-
----
-layout: center
----
-
-# Présentations, cartes 5 à 8
-
-<div class="pt-6 text-lg op-75">
-Sa source · l’exemple tapé · un mot au tableau
-</div>
-
-<div class="pt-6 text-sm op-60">Cinq minutes, au minuteur.</div>
+<div class="pt-6 text-sm op-60">Cinq minutes chacune, au minuteur.</div>
 
 ---
 layout: section
