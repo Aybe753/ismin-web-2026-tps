@@ -22,5 +22,27 @@ generator client {
 //
 // Once written:  npx prisma migrate dev --name init
 
+model Model {
+  id    String @id
+  name  String
+  task  String
+  parameters  Int
+  downloads   Int
+  license    String?
+
+  org   Organisation @relation(fields: [orgId], references: [id])
+  orgId String
+}
+
+
 // 👉 STEP 5: Then add an `Organisation` entity and replace the plain
 //    `org` text field with a real relation. See the README.
+
+model Organisation {
+  id      String  @id @default(uuid())
+  slug    String  @unique        
+  name    String                 
+  country String?                
+
+  models Model[]
+}

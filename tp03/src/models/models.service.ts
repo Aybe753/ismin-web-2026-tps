@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service.js';
 import { Model, Task } from './model.js';
+import { ModelModel as DBModel } from '../generated/prisma/models.js';
 
 /**
  * The service, to be moved from memory to the database.
@@ -29,24 +30,51 @@ export class ModelsService {
   constructor(private readonly prisma: PrismaService) {}
 
   async create(model: Model): Promise<Model> {
-    throw new Error('create is not implemented yet');
+    const dbModel = await this.prisma.model.create({data : {...model, org: {connectOrCreate: {where: {slug: model.org}, create: {slug: model.org, name: model.org}}}}});
+    return this.toModel(dbModel);
   }
 
-  async findAll(filters: { org?: string; task?: Task } = {}): Promise<Model[]> {
-    throw new Error('findAll is not implemented yet');
+  async findAll({orgId, task}: { orgId?: string; task?: Task } = {}): Promise<Model[]> {
+    const dbModels = await this.prisma.model.findMany({where: {orgId, task}});
+    return dbModels.map((dbModel) => this.toModel(dbModel));
   }
 
   async findOne(id: string): Promise<Model | null> {
-    throw new Error('findOne is not implemented yet');
+    const dbModel = await this.prisma.model.findUnique({where: {id}});
+    if(dbModel){
+      return this.toModel(dbModel);
+    }
+    else return null;
   }
 
   /** Returns `true` if the model existed, `false` otherwise. */
   async remove(id: string): Promise<boolean> {
-    throw new Error('remove is not implemented yet');
+    if(await this.findOne(id)){
+      await this.prisma.model.delete({where: {id}});
+      return true;
+    }
+    else return false;
+
   }
 
   /** Given: used by the tests to start from an empty database. */
   async clear(): Promise<void> {
     await this.prisma.model.deleteMany();
+  }
+
+  private toModel(dbModel: DBModel): Model{
+    return {
+      ...dbModel,
+      task: dbModel.task as Task,
+      license: dbModel.license ?? undefined,
+      org: dbModel.orgId
+    };
+  }
+  
+  private toDbModel(model: Model): DBModel{
+    return {
+      ...model,
+      license: model.license ?? null
+    };
   }
 }
