@@ -500,29 +500,6 @@ layout: section
 </div>
 
 ---
-
-# Soutenance blanche
-
-<div class="pt-2 text-lg">Ce qui vous attend au projet final, en vingt minutes, cinq fois.</div>
-
-<v-clicks>
-
-- **Un nom tiré au sort.** Vous venez au vidéoprojecteur avec votre TP du jour.
-- **J’ouvre un fichier**, je pointe une ligne&nbsp;: « pourquoi celle-là&nbsp;? »
-- **Une modification à faire en direct**, en cinq minutes, sans assistant. Par exemple&nbsp;: interdire à bob de créer des models.
-- **La règle d’or s’applique** comme au projet&nbsp;: ce qu’on ne sait pas expliquer est retiré, devant tout le monde.
-
-</v-clicks>
-
-<v-click>
-
-<div class="mt-8 p-4 rounded border-l-4 border-blue-500 bg-blue-500 bg-opacity-5">
-Rien n’est noté aujourd’hui. Au projet, tout le sera, exactement comme ça.
-</div>
-
-</v-click>
-
----
 layout: center
 ---
 
