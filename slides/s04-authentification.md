@@ -42,11 +42,11 @@ mdc: true
 <v-clicks>
 
 - **Une carte par binôme**&nbsp;: un concept, et une question à laquelle votre exemple répond
-- **Vingt-cinq minutes de préparation**, à deux, avec la documentation
+- **Trente minutes de préparation**, à deux, avec la documentation
 - **Cinq minutes** au vidéoprojecteur, minuteur visible
 - **Deux rôles**&nbsp;: l’un explique, l’autre tape. Vous choisissez qui fait quoi
-- **Le tableau** se remplit d’un mot par carte&nbsp;: à midi, c’est votre cours
-- **Le TP** de l’après-midi utilise les huit cartes, dans le même ordre
+- **Le tableau** se remplit d’un mot par carte&nbsp;: après les huit passages, c’est votre cours
+- **Le TP** qui suit utilise les huit cartes, dans le même ordre
 
 </v-clicks>
 
@@ -58,7 +58,7 @@ mdc: true
 
 <v-clicks>
 
-1. **Préparation à deux, 25 minutes**, avec les sources de la carte. L’assistant IA est permis pour préparer, pas pour présenter.
+1. **Préparation à deux, 30 minutes**, avec les sources de la carte. L’assistant IA est permis pour préparer, pas pour présenter.
 2. **Deux rôles**, à décider entre vous&nbsp;: l’un explique, l’autre tape l’exemple en commentant chaque ligne.
 3. **On annonce sa source**, on tape, on ne colle pas. À 5:00, c’est fini, terminé ou pas.
 4. **Votre carte dépend d’une autre&nbsp;?** Le playground contient déjà la brique. Le binôme d’amont peut être consulté, cinq minutes au plus.
@@ -389,7 +389,7 @@ Carte dense&nbsp;: le token obtenu dans `beforeAll` doit servir à tous les test
 </div>
 ---
 
-# Préparation&nbsp;: 25 minutes
+# Préparation&nbsp;: 30 minutes
 
 <div class="grid grid-cols-2 gap-6 pt-2">
 <div>
@@ -469,7 +469,7 @@ layout: section
 
 # TP
 
-<div class="op-75 pt-2"><code>tp04/README.md</code>&nbsp;: étapes 1 à 3 aujourd’hui, 4 et 5 avant demain</div>
+<div class="op-75 pt-2"><code>tp04/README.md</code>, étapes 1 à 5</div>
 
 <div class="pt-8 text-sm inline-block text-left">
 

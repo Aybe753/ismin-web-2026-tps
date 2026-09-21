@@ -6,7 +6,7 @@
 
 Votre API sait qui lui parle. Lire reste public, écrire demande un token, supprimer demande le rôle admin, et chaque model garde le nom de qui l'a créé.
 
-Le matin, ce projet est votre playground : les huit cartes s'y préparent. L'après-midi, c'est le TP.
+D'abord, ce projet est votre playground : les huit cartes s'y préparent. Ensuite, c'est le TP.
 
 ## 🚀 Démarrer
 
