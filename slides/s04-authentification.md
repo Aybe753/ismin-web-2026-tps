@@ -37,33 +37,19 @@ mdc: true
 
 # Aujourd’hui, le cours, c’est vous
 
-<div class="grid grid-cols-2 gap-8 pt-2">
-<div>
-
-| Heure | Quoi |
-|---|---|
-| 0:00 | Fin du TP3 |
-| 0:45 | Tirage des binômes, puis des cartes |
-| 0:55 | Préparation à deux, 25 min |
-| 1:20 | Présentations, cartes 1 à 4 |
-| 1:45 | Pause |
-| 1:55 | Présentations, cartes 5 à 8 |
-| 2:20 | TP, en binômes, étapes 1 à 3 |
-
-</div>
-<div>
+<div class="pt-4 text-lg">
 
 <v-clicks>
 
 - **Une carte par binôme**&nbsp;: un concept, et une question à laquelle votre exemple répond
-- **Cinq minutes** au vidéoprojecteur, minuteur visible. Pas de soutenance blanche aujourd’hui, la première est demain
+- **Vingt-cinq minutes de préparation**, à deux, avec la documentation
+- **Cinq minutes** au vidéoprojecteur, minuteur visible
 - **Deux rôles**&nbsp;: l’un explique, l’autre tape. Vous choisissez qui fait quoi
 - **Le tableau** se remplit d’un mot par carte&nbsp;: à midi, c’est votre cours
 - **Le TP** de l’après-midi utilise les huit cartes, dans le même ordre
 
 </v-clicks>
 
-</div>
 </div>
 
 ---
