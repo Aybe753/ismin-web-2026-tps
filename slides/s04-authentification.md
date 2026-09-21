@@ -57,7 +57,7 @@ mdc: true
 
 - **Une carte par binôme**&nbsp;: un concept, et une question à laquelle votre exemple répond
 - **Cinq minutes** au vidéoprojecteur, minuteur visible. Pas de soutenance blanche aujourd’hui, la première est demain
-- **Pile ou face** au moment de passer&nbsp;: l’un explique, l’autre tape
+- **Deux rôles**&nbsp;: l’un explique, l’autre tape. Vous choisissez qui fait quoi
 - **Le tableau** se remplit d’un mot par carte&nbsp;: à midi, c’est votre cours
 - **Le TP** de l’après-midi utilise les huit cartes, dans le même ordre
 
@@ -73,10 +73,9 @@ mdc: true
 <v-clicks>
 
 1. **Préparation à deux, 25 minutes**, avec les sources de la carte. L’assistant IA est permis pour préparer, pas pour présenter.
-2. **Pile ou face** devant la salle&nbsp;: l’un explique, l’autre tape l’exemple en commentant chaque ligne. Préparez les deux rôles.
+2. **Deux rôles**, à décider entre vous&nbsp;: l’un explique, l’autre tape l’exemple en commentant chaque ligne.
 3. **On annonce sa source**, on tape, on ne colle pas. À 5:00, c’est fini, terminé ou pas.
-4. **Avant de commencer**, répondez à la question du binôme précédent. **Terminez** par votre question à la salle.
-5. **Votre carte dépend d’une autre&nbsp;?** Le playground contient déjà la brique. Le binôme d’amont peut être consulté, cinq minutes au plus.
+4. **Votre carte dépend d’une autre&nbsp;?** Le playground contient déjà la brique. Le binôme d’amont peut être consulté, cinq minutes au plus.
 
 </v-clicks>
 
@@ -453,7 +452,7 @@ layout: center
 # Présentations, cartes 1 à 4
 
 <div class="pt-6 text-lg op-75">
-Sa source · l’exemple tapé · la question à la salle
+Sa source · l’exemple tapé · un mot au tableau
 </div>
 
 <div class="pt-6 text-sm op-60">Cinq minutes, au minuteur.</div>
@@ -473,7 +472,7 @@ layout: center
 # Présentations, cartes 5 à 8
 
 <div class="pt-6 text-lg op-75">
-Sa source · l’exemple tapé · la question à la salle
+Sa source · l’exemple tapé · un mot au tableau
 </div>
 
 <div class="pt-6 text-sm op-60">Cinq minutes, au minuteur.</div>
