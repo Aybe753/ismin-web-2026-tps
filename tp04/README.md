@@ -32,6 +32,22 @@ npm run test:watch         # dans un second terminal
 
 C'est tout, vous pouvez coder !
 
+## 🆕 Depuis le TP3
+
+L'API du TP3 est là, corrigée, et elle a grandi. Ce qui est nouveau :
+
+| Route | Quoi | Fourni ou à faire |
+|---|---|---|
+| `POST /auth/login` | Un token contre un mot de passe | Fourni |
+| `GET /auth/whoami` | Le payload du token, route protégée | Fourni |
+| `GET /organisations` | La liste des organisations | Fourni |
+| `POST /organisations` | Créer une organisation, token requis, 409 si le slug est pris | Fourni, à réserver aux admins à l'étape 4 |
+| `POST /models` | Refuse une organisation inconnue, 422, et un `downloads` envoyé, 400 | Fourni, à protéger à l'étape 2, à signer à l'étape 3 |
+| `PATCH /models/:id` | Modifier `name`, `task`, `parameters` ou `license` | Fourni, à protéger à l'étape 2 |
+| `DELETE /models/:id` | Supprimer | Fourni, à protéger à l'étape 2, à réserver aux admins à l'étape 4 |
+
+Et sous le capot : `createdAt` et `updatedAt` sur les deux tables, un seed en deux fichiers, `data/organisations.json` puis `data/models.json`, et une base de test séparée, `test.db`, migrée avant chaque suite.
+
 ## 🗺 Ce qui est fourni
 
 ```
@@ -53,18 +69,18 @@ data/
 playground/                       vos scripts : npx tsx playground/nom.ts
 test/
 ├── models.e2e-spec.ts            le sujet, ne pas modifier
-├── organisations.e2e-spec.ts     fourni, vert dès le départ : un exemple à lire
+├── organisations.e2e-spec.ts     fourni, vert dès le départ sauf le dernier   ← étape 4
 ├── auth.e2e-spec.ts              quatre tests à écrire              ← étape 5
 └── global-setup.ts               les tests ont leur propre base, test.db
 ```
 
-Une règle : `src/auth/` et `src/organisations/` se lisent, ne se modifient pas. Ce que vous ajoutez va dans `src/models/`, dans `src/playground/`, ou dans de nouveaux fichiers.
+Une règle : `src/auth/` se lit, ne se modifie pas. `src/organisations/` non plus, sauf une ligne à l'étape 4. Ce que vous ajoutez va dans `src/models/`, dans `src/playground/`, ou dans de nouveaux fichiers.
 
 ## 📐 Les règles du catalogue
 
 Elles sont déjà en place dans le code fourni, et les tests les vérifient.
 
-- Un model pointe vers une organisation **qui existe déjà** : sinon 422. Une organisation se crée exprès, `POST /organisations`, jamais en passant.
+- Un model pointe vers une organisation **qui existe déjà** : sinon 422. Une organisation se crée exprès, `POST /organisations`, par un admin à la fin du TP, jamais en passant.
 - Un id de model est unique : sinon 409.
 - `downloads` se mesure, il ne se poste pas : un client qui l'envoie reçoit 400. Il vaut 0 à la création.
 - `PATCH /models/:id` modifie `name`, `task`, `parameters` ou `license`. Ni l'id, ni l'organisation, ni `downloads`.
@@ -74,7 +90,7 @@ Elles sont déjà en place dans le code fourni, et les tests les vérifient.
 
 ### Étape 1 : lire la fondation
 
-**À faire.** Avec Bruno ou curl : `POST /auth/login` avec alice et secret, puis `GET /auth/whoami` avec le token, puis sans.
+**À faire.** Avec Bruno ou curl : `GET /organisations`, sans rien. Puis `POST /auth/login` avec alice et secret, puis `GET /auth/whoami` avec le token, puis sans.
 
 ```sh
 curl -s -X POST localhost:3000/auth/login -H 'content-type: application/json' -d '{"username":"alice","password":"secret"}'
@@ -105,9 +121,9 @@ curl -s localhost:3000/auth/whoami -H 'Authorization: Bearer <le token>'
 
 ### Étape 4 : réserver la suppression aux admins
 
-**À faire.** `DELETE /models/:id` répond 403 à bob et 204 à alice. Un decorator `@Roles('admin')` et un `RolesGuard` qui le lit, carte 7.
+**À faire.** `DELETE /models/:id` répond 403 à bob et 204 à alice. Un decorator `@Roles('admin')` et un `RolesGuard` qui le lit, carte 7. Puis la même chose sur `POST /organisations` : créer une organisation, c'est un geste d'admin.
 
-**C'est bon quand.** Les tests « deleting is for admins » sont verts.
+**C'est bon quand.** Les tests « deleting is for admins » sont verts, et le dernier test de `organisations.e2e-spec.ts` aussi.
 
 **Pièges.**
 

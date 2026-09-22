@@ -5,12 +5,14 @@ import { AppModule } from '../src/app.module.js';
 import { ModelsService } from '../src/models/models.service.js';
 
 /**
- * Given, and green from the start: the organisations API is provided.
- * Read it as an example: a public read, a protected write, a 409.
+ * Given. Green from the start, except the last one: step 4 reserves the
+ * creation of organisations to admins. Read it as an example: a public read,
+ * a protected write, a 409.
  */
 describe('/organisations API', () => {
   let app: INestApplication;
-  let token: string;
+  let adminToken: string;
+  let userToken: string;
 
   beforeAll(async () => {
     const moduleRef: TestingModule = await Test.createTestingModule({
@@ -21,11 +23,13 @@ describe('/organisations API', () => {
     app.useGlobalPipes(new ValidationPipe({ whitelist: true, forbidNonWhitelisted: true }));
     await app.init();
 
-    const login = await request(app.getHttpServer())
-      .post('/auth/login')
-      .send({ username: 'bob', password: 'secret' })
-      .expect(200);
-    token = login.body.access_token as string;
+    for (const [username, set] of [['alice', (t: string) => (adminToken = t)], ['bob', (t: string) => (userToken = t)]] as const) {
+      const login = await request(app.getHttpServer())
+        .post('/auth/login')
+        .send({ username, password: 'secret' })
+        .expect(200);
+      set(login.body.access_token as string);
+    }
   });
 
   afterAll(async () => {
@@ -39,7 +43,7 @@ describe('/organisations API', () => {
   it('lists the organisations, without a token', async () => {
     await request(app.getHttpServer())
       .post('/organisations')
-      .set('Authorization', `Bearer ${token}`)
+      .set('Authorization', `Bearer ${adminToken}`)
       .send({ slug: 'mistralai', name: 'Mistral AI', country: 'FR' })
       .expect(201);
 
@@ -56,15 +60,24 @@ describe('/organisations API', () => {
 
   it('refuses a slug that is already taken', async () => {
     const organisation = { slug: 'openai', name: 'OpenAI', country: 'US' };
-    await request(app.getHttpServer()).post('/organisations').set('Authorization', `Bearer ${token}`).send(organisation).expect(201);
-    await request(app.getHttpServer()).post('/organisations').set('Authorization', `Bearer ${token}`).send(organisation).expect(409);
+    await request(app.getHttpServer()).post('/organisations').set('Authorization', `Bearer ${adminToken}`).send(organisation).expect(201);
+    await request(app.getHttpServer()).post('/organisations').set('Authorization', `Bearer ${adminToken}`).send(organisation).expect(409);
   });
 
   it('refuses a slug that is not a lowercase slug', async () => {
     await request(app.getHttpServer())
       .post('/organisations')
-      .set('Authorization', `Bearer ${token}`)
+      .set('Authorization', `Bearer ${adminToken}`)
       .send({ slug: 'Mistral AI', name: 'Mistral AI' })
       .expect(400);
+  });
+
+  // ─── Step 4 ────────────────────────────────────────────────────────────
+  it('refuses a plain user, creating an organisation is for admins', async () => {
+    await request(app.getHttpServer())
+      .post('/organisations')
+      .set('Authorization', `Bearer ${userToken}`)
+      .send({ slug: 'openai', name: 'OpenAI' })
+      .expect(403);
   });
 });
