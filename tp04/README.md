@@ -8,6 +8,14 @@ Votre API sait qui lui parle. Lire reste public, écrire demande un token, suppr
 
 D'abord, ce projet est votre playground : les huit cartes s'y préparent. Ensuite, c'est le TP.
 
+> ⚠️ **Sujet mis à jour le 22 septembre.** Si vous aviez déjà commencé, remettez le projet à plat, puis rejouez la base :
+>
+> ```sh
+> git checkout -- . && git clean -fd src test prisma data
+> git pull --no-edit upstream main
+> npm run db:reset && npm run db:seed
+> ```
+
 ## 🚀 Démarrer
 
 ```sh
@@ -35,16 +43,32 @@ src/
 │   ├── auth.guard.ts             lit le Bearer, vérifie, remplit request.user   (carte 5)
 │   ├── password.ts               hash et vérification avec scrypt         (carte 1)
 │   └── dto/login.dto.ts
+├── organisations/                GET /organisations, POST /organisations : un guard déjà posé
 ├── playground/
 │   └── playground.controller.ts  votre bac à sable, monté sur /playground
-└── models/                       l'API du TP3, corrigée              ← étapes 2, 3, 4
+└── models/                       l'API du TP3, avec un PATCH         ← étapes 2, 3, 4
+data/
+├── organisations.json            12 organisations, avec nom et pays
+└── models.json                   17 models
 playground/                       vos scripts : npx tsx playground/nom.ts
 test/
 ├── models.e2e-spec.ts            le sujet, ne pas modifier
-└── auth.e2e-spec.ts              quatre tests à écrire              ← étape 5
+├── organisations.e2e-spec.ts     fourni, vert dès le départ : un exemple à lire
+├── auth.e2e-spec.ts              quatre tests à écrire              ← étape 5
+└── global-setup.ts               les tests ont leur propre base, test.db
 ```
 
-Une règle : `src/auth/` se lit, ne se modifie pas. Ce que vous ajoutez va dans `src/models/`, dans `src/playground/`, ou dans de nouveaux fichiers.
+Une règle : `src/auth/` et `src/organisations/` se lisent, ne se modifient pas. Ce que vous ajoutez va dans `src/models/`, dans `src/playground/`, ou dans de nouveaux fichiers.
+
+## 📐 Les règles du catalogue
+
+Elles sont déjà en place dans le code fourni, et les tests les vérifient.
+
+- Un model pointe vers une organisation **qui existe déjà** : sinon 422. Une organisation se crée exprès, `POST /organisations`, jamais en passant.
+- Un id de model est unique : sinon 409.
+- `downloads` se mesure, il ne se poste pas : un client qui l'envoie reçoit 400. Il vaut 0 à la création.
+- `PATCH /models/:id` modifie `name`, `task`, `parameters` ou `license`. Ni l'id, ni l'organisation, ni `downloads`.
+- Les tests tournent sur `test.db`, jamais sur `dev.db` : `npm run test:watch` ne vide plus votre base.
 
 ## 📝 Les étapes
 
@@ -61,7 +85,7 @@ curl -s localhost:3000/auth/whoami -H 'Authorization: Bearer <le token>'
 
 ### Étape 2 : protéger les écritures
 
-**À faire.** `POST /models` et `DELETE /models/:id` exigent un token. Le guard existe, carte 5 : posez-le.
+**À faire.** `POST /models`, `PATCH /models/:id` et `DELETE /models/:id` exigent un token. Le guard existe, carte 5, et `POST /organisations` le porte déjà : faites pareil.
 
 **C'est bon quand.** Les tests « writing requires a token » sont verts, et « reading stays public » le reste.
 
@@ -115,6 +139,8 @@ Demandez à votre assistant d'expliquer la différence entre authentification et
 | `JWT_SECRET is not set` ou `DATABASE_URL is not set` | `cp .env.example .env` |
 | 401 sur tout, même avec un token frais | Le secret a changé depuis la signature : refaites un login |
 | `Property 'createdBy' does not exist` | Colonne ajoutée mais client pas régénéré : `npx prisma generate`, et le type `Model` |
+| 422 `Unknown organisation` | L'organisation n'existe pas : `npm run db:seed`, ou `POST /organisations` avec un token |
+| Les tests échouent sur `no such column` | Une migration manque sur `test.db` : `npm run db:migrate`, puis relancez les tests |
 | `Nest can't resolve dependencies of the RolesGuard` | `Reflector` vient de `@nestjs/core`, pas de `@nestjs/common` |
 | Tout est cassé | `npm run db:reset` : **efface la base** et rejoue les migrations |
 
