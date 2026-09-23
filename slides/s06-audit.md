@@ -101,8 +101,8 @@ Le PDF par mail à 14h45. Présentation après la pause, cinq à dix minutes.
 </div>
 
 ---
-
-# 
+layout: center
+---
 
 <img src="/medias/s06-exit.jpg" class="h-96 mx-auto rounded" />
 
