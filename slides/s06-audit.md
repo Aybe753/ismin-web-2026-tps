@@ -102,6 +102,12 @@ Le PDF par mail à 14h45. Présentation après la pause, cinq à dix minutes.
 
 ---
 
+# 
+
+<img src="/medias/s06-exit.jpg" class="h-96 mx-auto rounded" />
+
+---
+
 # La séance
 
 <div class="grid grid-cols-2 gap-8 pt-2">
