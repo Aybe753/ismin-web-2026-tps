@@ -6,7 +6,7 @@
 
 Cette application est complète : c'est le corrigé du TP4, avec l'authentification, les organisations, les models, et tous ses tests verts. Elle fonctionne. Elle n'est pas prête pour la production.
 
-Votre travail, en trinômes et sur un thème tiré au sort : la lire comme un développeur qui la reçoit en héritage, trouver ce qu'il faudrait améliorer avant de la mettre devant de vrais utilisateurs, et le présenter à la salle en dix minutes et quatre slides.
+Votre travail, en binômes et sur un thème que vous choisissez : la lire comme un développeur qui la reçoit en héritage, trouver ce qu'il faudrait améliorer avant de la mettre devant de vrais utilisateurs, et le présenter à la salle en quatre slides.
 
 L'assistant IA est permis, et même conseillé, pour lire et pour lister. Ce qu'il ne fera pas à votre place : choisir, classer, et répondre aux questions.
 
@@ -33,29 +33,31 @@ Deux comptes : `alice`, admin, et `bob`, user, mot de passe `secret`. `POST /aut
 | Intégrité des données | `src/models/models.service.ts`, `prisma/schema.prisma` |
 | Contrat d'API et documentation | `src/models/models.controller.ts`, ce README, la réponse de chaque route, la collection Bruno du TP2 |
 | Validation des entrées | `src/**/dto/`, `src/models/model.ts` |
-| Exploitation | `src/main.ts`, `prisma.config.ts`, ce qui manque pour tourner sur un serveur |
+| Configuration et démarrage | `.env.example`, `src/main.ts`, les scripts de `package.json`, `prisma/seed.ts`, le `Dockerfile` |
 | Qualité et tests | `test/`, `vitest.config.ts`, ce que les tests ne couvrent pas |
 
-Un thème est une lentille, pas une frontière : si vous trouvez quelque chose en dehors, notez-le, la quatrième slide est faite pour ça.
+Un thème est une lentille, pas une frontière : si vous trouvez quelque chose en dehors, notez-le.
+
+Plusieurs binômes peuvent prendre le même thème, pas le même sujet : dites-moi ce que vous creusez, je veille aux doublons.
 
 ## 📝 Le livrable : quatre slides, pas une de plus
 
 1. **Le constat.** Votre thème, et en trois lignes ce que vous avez trouvé en lisant le code, avec les fichiers.
 2. **L'amélioration prioritaire.** Le problème. Le risque en production. La solution. L'effort, petit, moyen ou grand. Une seule.
 3. **Les deux suivantes**, deux lignes chacune, classées.
-4. **Deux réponses.** Si vous ne pouviez faire qu'une seule chose dans toute l'application, thème ou pas, laquelle ? Et : ce que l'assistant a proposé et que vous avez écarté, et pourquoi.
+4. **Une question.** Ce que l'assistant a proposé et que vous avez écarté, et pourquoi.
 
-Les slides se présentent depuis votre portable. Déposez aussi le PDF dans votre fork, `tp05/audit.pdf`, avant 15 h.
+Les slides se présentent depuis votre portable, entre cinq et dix minutes. Le PDF m'est envoyé par mail avant 15 h.
 
 ## ⏱ La séance
 
 | Heure | Quoi |
 |---|---|
-| 13:15 | Lancement, tirage des trinômes et des thèmes |
+| 13:15 | Lancement, les six thèmes, les binômes choisissent |
 | 13:25 | Recherche, 1 h 20 |
 | 14:45 | Pause |
-| 15:00 | Six présentations de dix minutes : six de présentation, quatre de questions |
-| 16:00 | Synthèse, l'audit complet au tableau |
+| 15:00 | Présentations, cinq à dix minutes par binôme |
+| Ensuite | Synthèse, l'audit complet au tableau |
 
 ## 🤖 IA
 

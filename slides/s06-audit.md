@@ -44,7 +44,7 @@ mdc: true
 - **MAIS** Elle n’est pas prête pour la production.
 - Vous la recevez en **héritage**, comme un développeur qui arrive sur un projet. Vous la lisez, vous trouvez ce qu’il faut améliorer, vous le classez.
 - **L'utilisation de l'IA**, pour lire et pour lister. Choisir, classer et répondre aux questions, c’est vous.
-- **Quatre slides**, dix minutes de présentation
+- **En binôme**, sur le thème de votre choix. **Quatre slides**, cinq à dix minutes.
 
 </v-clicks>
 
@@ -52,7 +52,7 @@ mdc: true
 
 ---
 
-# Six thèmes, six trinômes/binomes
+# Six thèmes, à choisir en binôme
 
 | Thème                              | Par où commencer                                                                   |
 |------------------------------------|------------------------------------------------------------------------------------|
@@ -60,11 +60,11 @@ mdc: true
 | **Intégrité des données**          | `models.service.ts`, `schema.prisma`                                               |
 | **Contrat d’API et documentation** | les controllers, le README, la réponse de chaque route, la collection Bruno du TP2 |
 | **Validation des entrées**         | les `dto/`, `model.ts`                                                             |
-| **Exploitation**                   | `main.ts`, `prisma.config.ts`, ce qui manque pour tourner sur un serveur           |
+| **Configuration et démarrage**     | `.env.example`, `main.ts`, les scripts npm, le seed, le `Dockerfile`               |
 | **Qualité et tests**               | `test/`, `vitest.config.ts`, ce que les tests ne couvrent pas                      |
 
 <div class="pt-3 text-sm op-75">
-Un thème est une lentille, pas une frontière. Ce que vous trouvez ailleurs va sur la quatrième slide.
+Un thème est une lentille, pas une frontière. Deux binômes peuvent prendre le même thème, pas le même sujet&nbsp;: dites-moi ce que vous creusez.
 </div>
 
 ---
@@ -89,9 +89,7 @@ Le problème. Le risque en production. La solution. L’effort&nbsp;: petit, moy
 
 Deux lignes chacune, classées.
 
-### 4 · Deux réponses
-
-**Si vous ne pouviez faire qu’une seule chose dans toute l’application**, thème ou pas, laquelle&nbsp;?
+### 4 · Une question
 
 **Ce que l’assistant a proposé et que vous avez écarté**, et pourquoi.
 
@@ -99,7 +97,7 @@ Deux lignes chacune, classées.
 </div>
 
 <div class="pt-4 text-sm op-75">
-Depuis votre portable. Et le PDF dans votre fork, <code>tp05/audit.pdf</code>, avant 15 h.
+Depuis votre portable, cinq à dix minutes. Le PDF par mail avant 15 h.
 </div>
 
 ---
@@ -111,11 +109,11 @@ Depuis votre portable. Et le PDF dans votre fork, <code>tp05/audit.pdf</code>, a
 
 | Heure | Quoi |
 |---|---|
-| 13:15 | Tirage des trinômes et des thèmes |
+| 13:15 | Les six thèmes, les binômes choisissent |
 | 13:25 | Recherche, 1 h 20 |
 | 14:45 | Pause |
-| 15:00 | Six présentations de dix minutes |
-| 16:00 | Synthèse au tableau |
+| 15:00 | Présentations, cinq à dix minutes par binôme |
+| 16:20 | Synthèse au tableau |
 
 </div>
 <div>
@@ -131,7 +129,7 @@ npm test
 ```
 
 <div class="pt-2 text-sm op-75">
-Six minutes de présentation, quatre de questions. Ce que vous ne savez pas expliquer sort de vos slides, devant tout le monde.
+Cinq à dix minutes chacun, questions comprises. Ce que vous ne savez pas expliquer sort de vos slides, devant tout le monde.
 </div>
 
 </div>
