@@ -40,11 +40,11 @@ mdc: true
 
 <v-clicks>
 
-- **Cette application est complète.** Auth, organisations, models, 25 tests verts. C’est le corrigé du TP4.
-- **Elle n’est pas prête pour la production.** Personne ne vous dira où ça pèche.
-- **Vous la recevez en héritage**, comme un développeur qui arrive sur un projet. Vous la lisez, vous trouvez ce qu’il faut améliorer, vous le classez.
-- **L’assistant IA est permis**, pour lire et pour lister. Choisir, classer et répondre aux questions, c’est vous.
-- **Dix minutes devant la salle**, quatre slides, pas une de plus.
+- Cette application est **complète.** Auth, organisations, models, 25 tests verts. C’est le corrigé du TP4.
+- **MAIS** Elle n’est pas prête pour la production.
+- Vous la recevez en **héritage**, comme un développeur qui arrive sur un projet. Vous la lisez, vous trouvez ce qu’il faut améliorer, vous le classez.
+- **L'utilisation de l'IA**, pour lire et pour lister. Choisir, classer et répondre aux questions, c’est vous.
+- **Quatre slides**, dix minutes de présentation
 
 </v-clicks>
 
@@ -52,16 +52,16 @@ mdc: true
 
 ---
 
-# Six thèmes, six trinômes
+# Six thèmes, six trinômes/binomes
 
-| Thème | Par où commencer |
-|---|---|
-| **Sécurité de l’authentification** | `src/auth/`, `src/users.ts`, `.env.example` |
-| **Intégrité des données** | `models.service.ts`, `schema.prisma` |
+| Thème                              | Par où commencer                                                                   |
+|------------------------------------|------------------------------------------------------------------------------------|
+| **Sécurité de l’authentification** | `src/auth/`, `src/users.ts`, `.env.example`                                        |
+| **Intégrité des données**          | `models.service.ts`, `schema.prisma`                                               |
 | **Contrat d’API et documentation** | les controllers, le README, la réponse de chaque route, la collection Bruno du TP2 |
-| **Validation des entrées** | les `dto/`, `model.ts` |
-| **Exploitation** | `main.ts`, `prisma.config.ts`, ce qui manque pour tourner sur un serveur |
-| **Qualité et tests** | `test/`, `vitest.config.ts`, ce que les tests ne couvrent pas |
+| **Validation des entrées**         | les `dto/`, `model.ts`                                                             |
+| **Exploitation**                   | `main.ts`, `prisma.config.ts`, ce qui manque pour tourner sur un serveur           |
+| **Qualité et tests**               | `test/`, `vitest.config.ts`, ce que les tests ne couvrent pas                      |
 
 <div class="pt-3 text-sm op-75">
 Un thème est une lentille, pas une frontière. Ce que vous trouvez ailleurs va sur la quatrième slide.
