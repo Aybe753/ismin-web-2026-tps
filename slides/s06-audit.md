@@ -41,7 +41,7 @@ mdc: true
 <v-clicks>
 
 - Cette application est **complète.** Auth, organisations, models, 25 tests verts. C’est le corrigé du TP4.
-- **MAIS** Elle n’est pas prête pour la production.
+- **MAIS** elle n’est pas prête pour la production.
 - Vous la recevez en **héritage**, comme un développeur qui arrive sur un projet. Vous la lisez, vous trouvez ce qu’il faut améliorer, vous le classez.
 - **L'utilisation de l'IA**, pour lire et pour lister. Choisir, classer et répondre aux questions, c’est vous.
 - **En binôme**, sur le thème de votre choix. **Quatre slides**, cinq à dix minutes.
@@ -64,7 +64,7 @@ mdc: true
 | **Qualité et tests**               | `test/`, `vitest.config.ts`, ce que les tests ne couvrent pas                      |
 
 <div class="pt-3 text-sm op-75">
-Un thème est une lentille, pas une frontière. Deux binômes peuvent prendre le même thème, pas le même sujet&nbsp;: dites-moi ce que vous creusez.
+Deux binômes peuvent prendre le même thème, pas le même sujet&nbsp;: dites-moi ce que vous creusez.
 </div>
 
 ---
@@ -74,30 +74,30 @@ Un thème est une lentille, pas une frontière. Deux binômes peuvent prendre le
 <div class="grid grid-cols-2 gap-6 pt-2">
 <div>
 
-### 1 · Le constat
+### 1 · Le problème
 
-Votre thème, et en trois lignes ce que vous avez trouvé en lisant le code, avec les fichiers.
+Une faille ou un manque. Votre thème en titre, **le fichier et la ligne**, et le scénario&nbsp;: «&nbsp;si quelqu’un fait X, alors Y&nbsp;». **Une seule.** Le code, dans VS Code.
 
-### 2 · L’amélioration prioritaire
+### 2 · La solution
 
-Le problème. Le risque en production. La solution. L’effort&nbsp;: petit, moyen, grand. **Une seule.**
+Le code, ou son principe. L’effort&nbsp;: petit, moyen, grand. **Le test** qui prouverait que c’est réglé.
 
 </div>
 <div>
 
-### 3 · Les deux suivantes
+### 3 · Le backlog
 
-Deux lignes chacune, classées.
+Trois à cinq lignes, classées&nbsp;: problème, impact, effort.
 
-### 4 · Une question
+### 4 · L’IA, écartée
 
-**Ce que l’assistant a proposé et que vous avez écarté**, et pourquoi.
+**Ce que l’IA a proposé et que vous n’avez pas retenu**, et pourquoi. Citez sa proposition.
 
 </div>
 </div>
 
 <div class="pt-4 text-sm op-75">
-Depuis votre portable, cinq à dix minutes. Le PDF par mail avant 15 h.
+Le PDF par mail à 14h45. Présentation après la pause, cinq à dix minutes.
 </div>
 
 ---
@@ -113,7 +113,6 @@ Depuis votre portable, cinq à dix minutes. Le PDF par mail avant 15 h.
 | 13:25 | Recherche, 1 h 20 |
 | 14:45 | Pause |
 | 15:00 | Présentations, cinq à dix minutes par binôme |
-| 16:20 | Synthèse au tableau |
 
 </div>
 <div>
@@ -129,7 +128,8 @@ npm test
 ```
 
 <div class="pt-2 text-sm op-75">
-Cinq à dix minutes chacun, questions comprises. Ce que vous ne savez pas expliquer sort de vos slides, devant tout le monde.
+Cinq à dix minutes chacun, questions comprises.
+Ce que vous ne savez pas expliquer sans IA n'est pas dans vos slides.
 </div>
 
 </div>

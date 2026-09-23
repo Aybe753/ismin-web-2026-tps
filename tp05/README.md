@@ -42,10 +42,10 @@ Plusieurs binômes peuvent prendre le même thème, pas le même sujet : dites-m
 
 ## 📝 Le livrable : quatre slides, pas une de plus
 
-1. **Le constat.** Votre thème, et en trois lignes ce que vous avez trouvé en lisant le code, avec les fichiers.
-2. **L'amélioration prioritaire.** Le problème. Le risque en production. La solution. L'effort, petit, moyen ou grand. Une seule.
-3. **Les deux suivantes**, deux lignes chacune, classées.
-4. **Une question.** Ce que l'assistant a proposé et que vous avez écarté, et pourquoi.
+1. **Le problème.** Une faille ou un manque, selon votre thème. Votre thème en titre, le fichier et la ligne. Un scénario concret : « si quelqu'un fait X, alors Y », que ce quelqu'un soit un attaquant, un utilisateur ou le prochain développeur. Un seul problème, le plus important. Le code, vous le montrez dans VS Code, police agrandie.
+2. **La solution.** Le code, ou son principe. L'effort, petit, moyen ou grand. Et le test qui prouverait que c'est réglé.
+3. **Le backlog.** Un tableau classé de trois à cinq lignes : le problème, son impact, l'effort.
+4. **L'IA, écartée.** Ce que l'assistant a proposé et que vous n'avez pas retenu, et pourquoi. Citez sa proposition.
 
 Les slides se présentent depuis votre portable, entre cinq et dix minutes. Le PDF m'est envoyé par mail avant 15 h.
 
