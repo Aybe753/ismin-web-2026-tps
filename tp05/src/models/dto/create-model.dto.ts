@@ -37,6 +37,7 @@ export class CreateModelDto {
 
   @IsNumber()
   @Min(0)
+  // @Max(2_000) // TODO: which maximum? Llama 405B, and the next ones?
   parameters!: number;
 
   @IsOptional()

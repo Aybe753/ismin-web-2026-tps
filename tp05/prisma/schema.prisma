@@ -32,6 +32,7 @@ model Model {
   downloads  Int     @default(0)
   license    String?
   createdBy  String?
+  deletedAt  DateTime?
 
   org        Organisation @relation(fields: [orgId], references: [id])
   orgId      String

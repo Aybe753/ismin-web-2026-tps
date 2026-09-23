@@ -134,5 +134,13 @@
     "task": "image-classification",
     "parameters": 0.005,
     "downloads": 760000
+  },
+  {
+    "id": "parakeet-tdt-0-6b-v2",
+    "name": "Parakeet TDT 0.6B v2",
+    "org": "nvidia",
+    "task": "speech-to-text",
+    "parameters": 0.6,
+    "downloads": 410000
   }
 ]

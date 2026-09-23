@@ -3,6 +3,7 @@ import { JwtService } from '@nestjs/jwt';
 import { findUser } from '../users.js';
 import { AuthGuard, type AuthenticatedRequest, type JwtPayload } from './auth.guard.js';
 import { LoginDto } from './dto/login.dto.js';
+// import { RefreshDto } from './dto/refresh.dto.js';
 import { verifyPassword } from './password.js';
 
 /**
@@ -25,6 +26,16 @@ export class AuthController {
     const payload: JwtPayload = { sub: user.id, username: user.username, role: user.role };
     return { access_token: await this.jwt.signAsync(payload) };
   }
+
+  // TODO: refresh tokens, the access token only lives one hour
+  // @Post('refresh')
+  // @HttpCode(200)
+  // async refresh(@Body() dto: RefreshDto): Promise<{ access_token: string }> {
+  //   const payload = await this.jwt.verifyAsync<JwtPayload>(dto.refresh_token, {
+  //     secret: process.env.JWT_REFRESH_SECRET,
+  //   });
+  //   return { access_token: await this.jwt.signAsync({ sub: payload.sub, username: payload.username, role: payload.role }) };
+  // }
 
   @Get('whoami')
   @UseGuards(AuthGuard)

@@ -40,9 +40,16 @@ async function main(): Promise<void> {
 
   const models = JSON.parse(await readFile('data/models.json', 'utf8')) as ModelSeed[];
   for (const { org, ...model } of models) {
-    const data = { ...model, org: { connect: { slug: org } } };
+    const organisation = await prisma.organisation.findUnique({ where: { slug: org } });
+    if (!organisation) {
+      console.warn(`⚠️  ${model.id}: unknown organisation ${org}, skipped`);
+      continue;
+    }
+    const data = { ...model, orgId: organisation.id };
     await prisma.model.upsert({ where: { id: model.id }, create: data, update: data });
   }
+
+  // TODO: seed the users from data/users.json once they live in the database
 
   console.log(`✅ ${organisations.length} organisations, ${models.length} models`);
 }

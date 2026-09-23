@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import type { Model as ModelRow, Organisation } from '../generated/prisma/client.js';
 import { PrismaService } from '../prisma/prisma.service.js';
+import type { PaginationQueryDto } from './dto/pagination-query.dto.js';
 import { Model, ModelAlreadyExists, Task, UnknownOrganisation } from './model.js';
 
 /** A row of the Model table with its organisation loaded (`include`). */
@@ -59,7 +60,21 @@ export class ModelsService {
     return this.toModel(row);
   }
 
-  async findAll(filters: { org?: string; task?: Task } = {}): Promise<Model[]> {
+  /** Creates an organisation and its first model in one go. */
+  async createWithOrganisation(
+    organisation: { slug: string; name: string; country?: string },
+    model: Omit<Model, 'downloads' | 'org'>,
+    createdBy?: string,
+  ): Promise<Model> {
+    const org = await this.prisma.organisation.create({ data: organisation });
+    const row = await this.prisma.model.create({
+      data: { ...model, createdBy, orgId: org.id },
+      include: { org: true },
+    });
+    return this.toModel(row);
+  }
+
+  async findAll(filters: { org?: string; task?: Task } = {}, _pagination?: PaginationQueryDto): Promise<Model[]> {
     const rows = await this.prisma.model.findMany({
       where: {
         ...(filters.org ? { org: { slug: filters.org } } : {}),
